@@ -1,10 +1,7 @@
 import pytest
 from main import BooksCollector
 
-@pytest.fixture 
-def collector():
-    collector = BooksCollector()
-    return collector
+
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
