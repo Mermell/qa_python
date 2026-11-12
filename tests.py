@@ -1,5 +1,5 @@
 from main import BooksCollector
-
+import pytest
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
@@ -8,6 +8,7 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+    
 
     def test_add_new_book_add_one_book_only_one_time(self):
         collect = BooksCollector()
@@ -15,7 +16,6 @@ class TestBooksCollector:
         collect.add_new_book('Сильмариллион')
         assert len(collect.get_books_genre()) == 1
 
-    import pytest
 
     @pytest.mark.parametrize('genre, book_name', [('Ужасы', 'Сны Ктулху')])
 
