@@ -3,7 +3,6 @@ import pytest
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
-
    
 
     # напиши свои тесты ниже
@@ -11,26 +10,24 @@ class TestBooksCollector:
     
 
     def test_add_new_book_add_one_book_only_one_time(self):
-        collect = BooksCollector()
-        collect.add_new_book('Сильмариллион')
-        collect.add_new_book('Сильмариллион')
-        assert len(collect.get_books_genre()) == 1
+        collector = BooksCollector()
+        collector.add_new_book('Сильмариллион')
+        collector.add_new_book('Сильмариллион')
+        assert len(collector.get_books_genre)() == 1
 
 
-    @pytest.mark.parametrize('genre, book_name', [('Ужасы', 'Сны Ктулху')])
+    def test_set_book_genre_valid_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book('Сны Ктулху')
+        collector.set_book_genre('Сны Ктулху','Ужасы')
+        assert collector.get_books_genre()['Сны Ктулху'] == 'Ужасы'
 
-    def test_set_book_genre_valid_genre(self, genre, book_name):
-        genre_collector = BooksCollector()
-        genre_collector.add_new_book(book_name)
-        genre_collector.set_book_genre(book_name, genre)
-        assert genre_collector.get_books_genre()[book_name] == genre
-
-    @pytest.mark.parametrize('genre, book_name', [('Фэнтези', 'Сильмариллион')])
-    def test_set_book_genre_genre_not_in_self_genre(self, genre, book_name):
-        genre_collector = BooksCollector()
-        genre_collector.add_new_book(book_name)
-        genre_collector.set_book_genre(book_name, genre)
-        assert genre_collector.get_books_genre()[book_name] == ''
+    
+    def test_set_book_genre_genre_not_in_self_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book('Сильмариллион')
+        collector.set_book_genre('Сильмариллион', 'Фэнтези')
+        assert collector.get_books_genre()['Сильмариллион'] == ''
 
 
     def test_get_book_genre_return_book_genre_by_name(self):
